@@ -23,11 +23,14 @@ public class Task20180926 implements Task {
      * @param sum
      */
     public boolean hasTwoNumbersWithSumOf(Integer[] numbers, Integer sum) {
+        // Use an TreeSet so the number will be kept sorted for the lookup.
         TreeSet<Integer> pairs = new TreeSet<>();
         for (Integer i : numbers) {
             if (pairs.contains(i)) {
                 return true;
             }
+            // Instead of summing up when going through the list,
+            // keep track of which other number will result in the checked sum.
             pairs.add(sum - i);
         }
         return false;
